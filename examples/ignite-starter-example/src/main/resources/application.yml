@@ -1,0 +1,20 @@
+ignite:
+  #igniteInstanceName: "helloIgnite"
+  #peerClassLoadingEnabled: true
+  ipFinder:
+    multicast:
+      multicastGroup: "228.10.10.121"
+  #clientMode: false
+  caches:
+    uservoCache:
+      indexKeyType: long
+      indexValueType: f.example.ignite.starter.model.UserVo
+      cacheStoreFactory:
+        type: custom
+        cacheStoreClass: f.example.ignite.starter.service.UserVoCacheStore
+    goodsCache:
+      expiryPolicy:
+        name: created
+        timeout: 300
+      evictionPolicy:
+        name: lru

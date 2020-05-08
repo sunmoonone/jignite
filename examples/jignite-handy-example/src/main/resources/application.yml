@@ -1,0 +1,25 @@
+ignite:
+  #igniteInstanceName: "helloIgnite"
+  #peerClassLoadingEnabled: true
+  ipFinder:
+    multicast:
+      multicastGroup: "228.10.10.171"
+  #clientMode: false
+  caches:
+    uservoCache:
+      indexKeyType: long
+      indexValueType: f.example.ignite.handy.user.model.UserVo
+      cacheStoreFactory:
+        type: custom
+        cacheStoreClass: f.example.ignite.handy.service.UserVoCacheStore
+
+logging:
+  level:
+    org.springframework.web: info
+    f.example: debug
+#    java.sql: debug
+#    org.springframework: debug
+    org.apache.ignite: debug
+  pattern:
+    file: '%d{yyyy-MM-dd HH:mm:ss.SSS} %5p -- [%t] %-40.40logger{39} : %m%n%xEx{10}'
+    console: '%d{yyyy-MM-dd HH:mm:ss.SSS} %5p -- [%t] %-40.40logger{39} : %m%n%xEx{10}'

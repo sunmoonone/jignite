@@ -1,0 +1,11 @@
+server:
+  port: 80
+
+spring:
+  cache:
+    type: ignite
+    ignite:
+      ipFinder:
+        kubernetes:
+          namespace: kaifa
+          serviceName: fexample

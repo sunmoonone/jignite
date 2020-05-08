@@ -1,0 +1,70 @@
+spring:
+  cache:
+    type: ignite
+    ignite:
+      #igniteInstanceName: "helloIgnite"
+      #peerClassLoadingEnabled: true
+      ipFinder:
+        multicast:
+          multicastGroup: "228.10.10.171"
+      #clientMode: false
+      caches:
+        userCache:
+          #onHeap: false
+          #maxMemSize: 102400000
+          #cacheMode: PARTITIONED
+          #indexKeyType: AffinityKey
+          indexKeyType: long
+          indexValueType: f.example.ignite.cache.starter.user.model.User
+          cacheStoreFactory:
+            type: jdbc
+            #optional
+            dataSourceBean: dataSource
+            dialect: mysql
+            orms:
+              - schema: auth
+                table: user
+                model: f.example.ignite.cache.starter.user.model.User
+                fields:
+                  id:
+                    pk: true
+                    column: id
+                    sqlType: bigint
+                  nick:
+                    column: nick
+                    sqlType: varchar
+                  head:
+                    column: head
+                    sqlType: varchar
+                  gender:
+                    column: gender
+                    sqlType: tinyint
+
+        uservoCache:
+          indexKeyType: long
+          indexValueType: f.example.ignite.cache.starter.user.model.UserVo
+          cacheStoreFactory:
+            type: custom
+            cacheStoreClass: f.example.ignite.cache.starter.service.UserVoCacheStore
+
+        goodsCache:
+          expiryPolicy:
+            name: created
+            timeout: 5
+          evictionPolicy:
+            name: lru
+        default:
+          evictionPolicy:
+          name: lru
+
+
+logging:
+  level:
+    org.springframework.web: info
+    f.example: debug
+#    java.sql: debug
+#    org.springframework: debug
+    org.apache.ignite: debug
+  pattern:
+    file: '%d{yyyy-MM-dd HH:mm:ss.SSS} %5p -- [%t] %-40.40logger{39} : %m%n%xEx{10}'
+    console: '%d{yyyy-MM-dd HH:mm:ss.SSS} %5p -- [%t] %-40.40logger{39} : %m%n%xEx{10}'

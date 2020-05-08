@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>jignite</artifactId>
+        <groupId>f.s</groupId>
+        <version>0.0.2-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>jignite-examples</artifactId>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>ignite-starter-example</module>
+        <module>ignite-cache-starter-example</module>
+        <module>jignite-handy-example</module>
+    </modules>
+
+
+</project>
