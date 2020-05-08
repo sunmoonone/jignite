@@ -1,4 +1,5 @@
-# jignite-handy
+# jignite
+spring-boot and apache ignite integration
 项目主要提供了一些方便使用的配置类和IgniteBean
 
 ## 概念说明
